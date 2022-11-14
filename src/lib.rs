@@ -1,15 +1,17 @@
 use macroquad::prelude::*;
 
-extern crate::modulos_comunes;
-use modulos_comunes::ConvertTest;
-
 pub const  TESTDATALEN: usize = 0;
 
 #[derive(Copy, Clone, PartialEq, Default)]
 pub struct TestData {
 }
 
-fn to_bytes(struct_in: TestData) -> [u8;TESTDATALEN]{
+fn to_bytes(_struct_in: TestData) -> [u8;TESTDATALEN]{
+    [0;TESTDATALEN]
+}
+
+pub trait ConvertTest {
+    fn to_bytes(&self) -> [u8;TESTDATALEN];
 }
 
 impl ConvertTest for TestData {
