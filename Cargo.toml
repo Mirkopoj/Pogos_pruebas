@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 macroquad = "0.3.23"
-modulos_comunes = { git = "https://github.com/Mirkopoj/modulos_comunes.git", branch = "funca" }
