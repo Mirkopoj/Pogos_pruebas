@@ -6,6 +6,10 @@ pub const  TESTDATALEN: usize = 0;
 pub struct TestData {
 }
 
+pub fn from_bytes(_bytes_in: &[u8]) -> TestData {
+    Default::default()
+}
+
 fn to_bytes(_struct_in: TestData) -> [u8;TESTDATALEN]{
     [0;TESTDATALEN]
 }
