@@ -1,4 +1,6 @@
 use macroquad::prelude::*;
+
+extern crate::modulos_comunes;
 use modulos_comunes::ConvertTest;
 
 pub const  TESTDATALEN: usize = 0;
