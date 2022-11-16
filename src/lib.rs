@@ -31,7 +31,6 @@ pub struct TestData {
     verificado_bueno: bool,
 }
 
-/* Editar el valor de la constante de acuerdo al tamaño del array de bytes */
 pub const  TESTDATALEN: usize = 30;
 fn to_bytes(struct_in: TestData) -> [u8;TESTDATALEN]{
     let mut ret = [0;TESTDATALEN];

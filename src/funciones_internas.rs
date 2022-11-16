@@ -1,5 +1,4 @@
 use std::sync::mpsc::{Receiver, TryRecvError};
-
 use crate::{to_bytes, TestData, TESTDATALEN};
 
 pub trait ConvertTest {
