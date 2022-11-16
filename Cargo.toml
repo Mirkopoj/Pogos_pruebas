@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 macroquad = "0.3.23"
+gpiod = "0.2.2"
+i2c-linux = "0.1.2"
