@@ -87,7 +87,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
     let chipi = Chip::new("gpiochip3").expect("No se abrió el chip, zy"); // open chip
     let ipts = Options::input([4,6]) 
         .consumer("my-inputs, zy"); 
-    let inputs = chipi.request_lines(ipts).expect("Pedido de salidas rechazado, abc");
+    let inputs = chipi.request_lines(ipts).expect("Pedido de entradas rechazado, abc");
 
     let mut i2c = I2c::from_path("/dev/i2c-0").expect("i2c");
     i2c.smbus_set_slave_address(0x08, false).expect("addr");
