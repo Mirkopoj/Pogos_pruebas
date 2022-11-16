@@ -76,19 +76,24 @@ pub fn resultados (_test_data: TestData) {
 
 const  NUMERODEPRUEBAS: usize = 1018;
 pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>) -> Result<bool, SendError<TestData>> {
+    println!("Entrando a las pruebas");
     let mut test_data: TestData = Default::default();
     let mut ret = true;
 
+    println!("Pidiendo abc");
     let chipo = Chip::new("gpiochip2").expect("No se abrió el chip, abc"); // open chip
-    let opts = Options::output([18,17,15]) 
+    let opts = Options::output([15,17,18]) 
+        .values([false,false])
         .consumer("my-outputs, abc"); 
     let outputs = chipo.request_lines(opts).expect("Pedido de salidas rechazado, abc");
 
+    println!("Pidiendo zy");
     let chipi = Chip::new("gpiochip3").expect("No se abrió el chip, zy"); // open chip
     let ipts = Options::input([4,6]) 
         .consumer("my-inputs, zy"); 
     let inputs = chipi.request_lines(ipts).expect("Pedido de entradas rechazado, abc");
 
+    println!("Pidiendo i2c");
     let mut i2c = I2c::from_path("/dev/i2c-0").expect("i2c");
     i2c.smbus_set_slave_address(0x08, false).expect("addr");
     i2c.smbus_write_byte(42).expect("Write");//Sincronizar el pic
