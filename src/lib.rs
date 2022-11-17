@@ -10,7 +10,7 @@ use std::io::{Write, Read};
 use std::str;
 use std::time::Duration;
 use std::thread::sleep;
-use gpiod::{Chip, Options, Lines, Output, Input};
+use gpiod::{Chip, Options, Lines, Input};
 extern crate i2c_linux;
 use i2c_linux::I2c;
 use std::fs::File;
@@ -80,13 +80,6 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
     let mut test_data: TestData = Default::default();
     let mut ret = true;
 
-    println!("Pidiendo abc");
-    let chipo = Chip::new("gpiochip2").expect("No se abrió el chip, abc"); // open chip
-    let opts = Options::output([15,17,18]) 
-        .values([false,false])
-        .consumer("my-outputs, abc"); 
-    let outputs = chipo.request_lines(opts).expect("Pedido de salidas rechazado, abc");
-
     println!("Pidiendo zy");
     let chipi = Chip::new("gpiochip3").expect("No se abrió el chip, zy"); // open chip
     let ipts = Options::input([4,6]) 
@@ -107,7 +100,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
             },
             1..=16 if i%2 == 0 => {
                 let abc = (i/2) as u8;
-                abc_put(abc, &outputs);
+                abc_put(abc, &mut i2c);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
             },
@@ -184,7 +177,8 @@ fn adc(struct_in: &mut TestData,
        tension_tot: &mut [f64;3],
        i2c: &mut I2c<File>,
        ){
-
+    i2c.smbus_write_byte(42).expect("Write, adc");//Sincronizar el pic
+                                             
     for i in 0..3 {
         let adch = i2c.smbus_read_byte().expect("ReadH") as u16;
         let adcl = i2c.smbus_read_byte().expect("ReadL") as u16;
@@ -264,6 +258,6 @@ fn programar_y_verificar(path_to_hex: &'static str) -> bool {
     ret
 }
 
-fn abc_put(abc: u8, outputs: &Lines<Output>){
-    outputs.set_values(abc).expect("No se seteó abc");
+fn abc_put(abc: u8, i2c: &mut I2c<File>){
+    i2c.smbus_write_byte(abc).expect("Write, abc");
 }
