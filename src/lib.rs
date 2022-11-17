@@ -105,7 +105,7 @@ pub fn resultados (test_data: TestData) {
             let b = (rect>>1 & 1) == 1; 
             let c = (rect>>2 & 1) == 1; 
 
-            let y_calculado = (a^b)&(b|c);
+            let y_calculado = !((!(a|c))^(!(b&c)));
             let y_real = (test_data.y>>rect)&1 == 1;
             
             let resultado = y_real == y_calculado;
