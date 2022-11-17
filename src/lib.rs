@@ -114,7 +114,7 @@ pub fn resultados (test_data: TestData) {
         }
     }
 
-    let t1x = 1000.0 + test_data.tension1 as f32;
+    let t1x = 1000.0 + (test_data.tension1*100.0) as f32;
     draw_triangle(vec2(t1x, y),
                   vec2(t1x-6.0, y-10.0),
                   vec2(t1x+6.0, y-10.0),
@@ -125,7 +125,7 @@ pub fn resultados (test_data: TestData) {
     draw_rectangle(1000.0, y, 350.0, y_step*2.0, RED);
     draw_rectangle(1160.0, y, 10.0, y_step*2.0, GREEN);
 
-    let t2x = 1000.0 + test_data.tension2 as f32;
+    let t2x = 1000.0 + (test_data.tension2*100.0) as f32;
     draw_triangle(vec2(t2x, y+y_step*4.0),
                   vec2(t2x-6.0, y+y_step*4.0-10.0),
                   vec2(t2x+6.0, y+y_step*4.0-10.0),
@@ -136,7 +136,7 @@ pub fn resultados (test_data: TestData) {
     draw_rectangle(1000.0, y+y_step*4.0, 350.0, y_step*2.0, RED);
     draw_rectangle(1020.0, y+y_step*4.0, 330.0, y_step*2.0, GREEN);
 
-    let t3x = 1000.0 + test_data.tension3 as f32;
+    let t3x = 1000.0 + (test_data.tension3*100.) as f32;
     draw_triangle(vec2(t3x, y+y_step*8.0),
                   vec2(t3x-6.0, y+y_step*8.0-10.0),
                   vec2(t3x+6.0, y+y_step*8.0-10.0),
