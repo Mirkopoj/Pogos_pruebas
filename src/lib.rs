@@ -47,8 +47,8 @@ fn to_bytes(struct_in: TestData) -> [u8;TESTDATALEN]{
     ret[5] = struct_in.y_cont;
 
     ret[06..14].copy_from_slice(&struct_in.tension1.to_be_bytes());
-    ret[14..22].copy_from_slice(&struct_in.tension1.to_be_bytes());
-    ret[22..30].copy_from_slice(&struct_in.tension1.to_be_bytes());
+    ret[14..22].copy_from_slice(&struct_in.tension2.to_be_bytes());
+    ret[22..30].copy_from_slice(&struct_in.tension3.to_be_bytes());
 
     ret
 }
@@ -134,7 +134,7 @@ pub fn resultados (test_data: TestData) {
 
     draw_rectangle(999.0, y+y_step*4.0-1.0, 352.0, y_step*2.0+2.0, BLACK);
     draw_rectangle(1000.0, y+y_step*4.0, 350.0, y_step*2.0, RED);
-    draw_rectangle(1020.0, y+y_step*4.0, 330.0, y_step*2.0, GREEN);
+    draw_rectangle(1000.0, y+y_step*4.0, 20.0, y_step*2.0, GREEN);
 
     let t3x = 1000.0 + (test_data.tension3*100.) as f32;
     draw_triangle(vec2(t3x, y+y_step*8.0),
