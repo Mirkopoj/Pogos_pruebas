@@ -141,7 +141,7 @@ fn programar_y_verificar_bueno(struct_in: &mut TestData) -> bool {
 }
 
 fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
-    let z_medido = inputs.get_values([Some(false),None]).expect("No se leyó z")[1].expect("No había x");
+    let z_medido = inputs.get_values([Some(false),None]).expect("No se leyó z")[0].expect("No había z");
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
@@ -157,7 +157,7 @@ fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
 }
 
 fn get_y(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
-    let y_medido = inputs.get_values([None,Some(false)]).expect("No se leyó y")[1].expect("No había x");
+    let y_medido = inputs.get_values([None,Some(false)]).expect("No se leyó y")[1].expect("No había y");
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
