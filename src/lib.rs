@@ -2,7 +2,7 @@ use std::sync::mpsc::{Receiver, Sender, SendError};
 
 use macroquad::prelude::*;
 
-mod funciones_internas;
+pub mod funciones_internas;
 use funciones_internas::*;
 
 use std::process::{Command, Stdio};
