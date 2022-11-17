@@ -114,6 +114,8 @@ pub fn resultados (test_data: TestData) {
         }
     }
 
+    draw_rectangle(1210.0, y, 3500.0, y_step*2.0, RED);
+
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
     draw_text("|---+-+-|", x, y+y_step*2.0, font_size, BLACK);
