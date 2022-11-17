@@ -120,16 +120,16 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
             _ => { },
         };
 
-        ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
-        ret &= test_data.tension2<0.2;
-        ret &= test_data.tension3>3.2;
-        println!("Tension1: {}", test_data.tension1);
-        println!("Tension2: {}", test_data.tension2);
-        println!("Tension3: {}", test_data.tension3);
-        println!("Aprobado: {}", ret);
-
         pruebas_tx.send(test_data)?
     }
+
+    ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
+    ret &= test_data.tension2<0.2;
+    ret &= test_data.tension3>3.2;
+    println!("Tension1: {}", test_data.tension1);
+    println!("Tension2: {}", test_data.tension2);
+    println!("Tension3: {}", test_data.tension3);
+    println!("Aprobado: {}", ret);
 
     Ok(ret) //true para placas funcionales, false para placas defectuosas
 }
