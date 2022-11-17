@@ -110,12 +110,12 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 print!("|{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
-                if !ret {println!("Falló ^^^^");}
+                //if !ret {println!("Falló ^^^^");}
             },
             1..=16 if i%2 == 0 => {
                 let abc = (i/2) as u8;
                 ret&=get_y(&mut test_data, &inputs, abc);
-                if !ret {println!("Falló ^^^^");}
+                //if !ret {println!("Falló ^^^^");}
             },
             17..=1017 => {
                 adc(&mut test_data, i-17, &mut tensiones, &mut i2c);
