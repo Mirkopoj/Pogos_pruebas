@@ -164,7 +164,6 @@ fn programar_y_verificar_bueno(struct_in: &mut TestData) -> bool {
 
 fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     let z_medido = inputs.get_values([Some(false),None]).expect("No se leyó z")[0].expect("No había z");
-    print!("{:5}|",z_medido);
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
@@ -176,24 +175,29 @@ fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     struct_in.z |= z<<struct_in.z_cont;
     struct_in.z_cont += 1;
 
-    z_calculado == z_medido
+    let ret = z_calculado == z_medido;
+    print!("{:5}|{:5}|{:5}|",z_calculado,z_medido,ret);
+
+    ret
 }
 
 fn get_y(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     let y_medido = inputs.get_values([None,Some(false)]).expect("No se leyó y")[1].expect("No había y");
-    println!("{:5}|",y_medido);
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
     let c = (conv>>2 & 1) == 1; 
 
-    let y_calculado = (a^b)&(b|c);
+    let y_calculado = !((!(a|c))^(!(b&c)));
     
     let y = if y_medido { 1 } else { 0 };
     struct_in.y |= y<<struct_in.y_cont;
     struct_in.y_cont += 1;
 
-    y_calculado == y_medido
+    let ret = y_calculado == y_medido;
+    print!("{:5}|{:5}|{:5}|",z_calculado,z_medido,ret);
+
+    ret
 }
 
 fn adc(struct_in: &mut TestData,
