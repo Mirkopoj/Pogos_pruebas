@@ -73,7 +73,9 @@ pub fn from_bytes(bytes_in: &[u8]) -> TestData {
 pub fn resultados (test_data: TestData) {
     clear_background(GREEN);
     
-    draw_text("+---+-----+-----+-----+-----+-----+-----+\n|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |\n|---+-----+-----+-----+-----+-----+-----|", 95.0, 100.0, 60.0, BLACK);
+    draw_text("+---+-----+-----+-----+-----+-----+-----+", 95.0, 100.0, 60.0, BLACK);
+    draw_text("|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |", 95.0, 120.0, 60.0, BLACK);
+    draw_text("|---+-----+-----+-----+-----+-----+-----|", 95.0, 140.0, 60.0, BLACK);
 
 }
 
