@@ -97,10 +97,13 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         match i {
             0 => {
                 ret&=programar_y_verificar_test(&mut test_data);
+                println!("ABC|  Z |  Y ");
+                println!("---+----+----");
             },
             1..=16 if i%2 == 0 => {
                 let abc = (i/2) as u8;
                 abc_put(abc, &mut i2c);
+                print!("{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
             },
@@ -120,6 +123,10 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
         ret &= test_data.tension2<0.2;
         ret &= test_data.tension3>3.2;
+        println!("Tension1: {}", test_data.tension1);
+        println!("Tension2: {}", test_data.tension2);
+        println!("Tension3: {}", test_data.tension3);
+        println!("Aprobado: {}", ret);
 
         pruebas_tx.send(test_data)?
     }
@@ -142,6 +149,7 @@ fn programar_y_verificar_bueno(struct_in: &mut TestData) -> bool {
 
 fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     let z_medido = inputs.get_values([Some(false),None]).expect("No se leyó z")[0].expect("No había z");
+    print!("{}|",z_medido);
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
@@ -158,6 +166,7 @@ fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
 
 fn get_y(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     let y_medido = inputs.get_values([None,Some(false)]).expect("No se leyó y")[1].expect("No había y");
+    println!("{}",y_medido);
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
