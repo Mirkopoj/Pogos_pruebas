@@ -97,14 +97,14 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         match i {
             0 => {
                 ret&=programar_y_verificar_test(&mut test_data);
-                println!("---+----+----");
-                println!("ABC|  Z |  Y ");
-                println!("---+----+----");
+                println!("+---+-----+-----+");
+                println!("|ABC|  Z  |  Y  |");
+                println!("|---+-----+-----|");
             },
             1..=16 if i%2 == 1 => {
                 let abc = (i/2) as u8;
                 abc_put(abc, &mut i2c);
-                print!("{:03b}|",abc);
+                print!("|{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
             },
@@ -153,7 +153,7 @@ fn programar_y_verificar_bueno(struct_in: &mut TestData) -> bool {
 
 fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     let z_medido = inputs.get_values([Some(false),None]).expect("No se leyó z")[0].expect("No había z");
-    print!("{}|",z_medido);
+    print!("{:5}|",z_medido);
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
@@ -170,7 +170,7 @@ fn get_z(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
 
 fn get_y(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     let y_medido = inputs.get_values([None,Some(false)]).expect("No se leyó y")[1].expect("No había y");
-    println!("{}",y_medido);
+    println!("{:5}|",y_medido);
 
     let a = (conv>>0 & 1) == 1; 
     let b = (conv>>1 & 1) == 1; 
