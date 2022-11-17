@@ -77,7 +77,7 @@ pub fn resultados (test_data: TestData) {
     draw_text("|ABC|Z|Y|", 95.0, 120.0, 40.0, BLACK);
     draw_text("|---+-+-|", 95.0, 140.0, 40.0, BLACK);
     for i in 0u8..8 {
-        let renglon = match (test_data.z_cont<=test_data.abc, test_data.y_cont<=test_data.abc) {
+        let renglon = match (test_data.z_cont>test_data.abc, test_data.y_cont>test_data.abc) {
             (false, false) => {
                 format!("|{:03b}|X|X|",i)
             },
@@ -133,12 +133,10 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 print!("|{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
-                //if !ret {println!("Falló ^^^^");}
             },
             1..=16 if i%2 == 0 => {
                 let abc = ((i/2)-1) as u8;
                 ret&=get_y(&mut test_data, &inputs, abc);
-                //if !ret {println!("Falló ^^^^");}
             },
             17..=1017 => {
                 adc(&mut test_data, i-17, &mut tensiones, &mut i2c);
