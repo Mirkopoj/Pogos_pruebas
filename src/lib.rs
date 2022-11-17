@@ -113,7 +113,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 //if !ret {println!("Falló ^^^^");}
             },
             1..=16 if i%2 == 0 => {
-                let abc = (i/2) as u8;
+                let abc = ((i/2)-1) as u8;
                 ret&=get_y(&mut test_data, &inputs, abc);
                 //if !ret {println!("Falló ^^^^");}
             },
