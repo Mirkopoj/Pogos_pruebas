@@ -231,7 +231,7 @@ fn adc(struct_in: &mut TestData,
        tension_tot: &mut [f64;3],
        i2c: &mut I2c<File>,
        ){
-    i2c.smbus_write_byte(42).expect("Write, adc");//Sincronizar el pic
+    //i2c.smbus_write_byte(42).expect("Write, adc");//Sincronizar el pic
                                              
     for i in 0..3 {
         let adch = i2c.smbus_read_byte().expect("ReadH") as u16;
