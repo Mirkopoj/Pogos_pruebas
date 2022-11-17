@@ -101,7 +101,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 println!("---+----+----");
             },
             1..=16 if i%2 == 0 => {
-                let abc = (i/2) as u8;
+                let abc = ((i/2)-1) as u8;
                 abc_put(abc, &mut i2c);
                 print!("{:03b}|",abc);
                 sleep(Duration::from_millis(1));
