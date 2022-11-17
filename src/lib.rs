@@ -141,6 +141,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
             },
             _ => { },
         };
+        prinln!("Sale: {:?}", test_data);
 
         pruebas_tx.send(test_data)?
     }
