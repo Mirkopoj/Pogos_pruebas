@@ -100,15 +100,15 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 println!("ABC|  Z |  Y ");
                 println!("---+----+----");
             },
-            1..=16 if i%2 == 0 => {
-                let abc = ((i/2)-1) as u8;
+            1..=16 if i%2 == 1 => {
+                let abc = (i/2) as u8;
                 abc_put(abc, &mut i2c);
                 print!("{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
             },
-            1..=16 if i%2 == 1 => {
-                let abc = ((i-1)/2) as u8;
+            1..=16 if i%2 == 0 => {
+                let abc = (i/2) as u8;
                 ret&=get_y(&mut test_data, &inputs, abc);
             },
             17..=1017 => {
