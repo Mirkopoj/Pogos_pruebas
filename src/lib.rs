@@ -71,14 +71,14 @@ pub fn from_bytes(bytes_in: &[u8]) -> TestData {
 }
 
 pub fn resultados (test_data: TestData) {
-    clear_background(WHITE);
+    clear_background(BEIGE);
     
     let x = 95.0;
     let y = 100.0;
     let y_step = 30.0;
     let font_size = 40.0;
 
-    draw_rectangle(x, y+y_step*2.5, 50.0, y_step*10.0, GRAY);
+    draw_rectangle(x+10.0, y+y_step*2.1, 150.0, y_step*9.0, GRAY);
 
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
