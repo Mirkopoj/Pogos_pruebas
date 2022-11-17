@@ -84,9 +84,9 @@ pub fn resultados (test_data: TestData) {
             let offset = rect as f32;
             draw_rectangle(x+8.0, y+(y_step*2.1)+2.0+offset*y_step, 72.0, (y_step*1.0)+1.0, GREEN);
         }
-        for rect in 0..=test_data.z_cont {
+        for rect in 0..test_data.z_cont {
             let offset = rect as f32;
-            draw_rectangle(175.0, y+(y_step*2.1)+2.0+offset*y_step, 24.0, (y_step*1.0)+1.0, GREEN);
+            draw_rectangle(175.0, y+(y_step*2.1)+2.0+offset*y_step, 36.0, (y_step*1.0)+1.0, GREEN);
         }
     }
 
