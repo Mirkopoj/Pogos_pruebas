@@ -115,7 +115,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
             },
             1..=16 if i%2 == 1 => {
                 let abc = (i/2) as u8;
-                abc_put(abc, &mut i2c);
+                abc_put(abc, &mut i2c, &mut test_data);
                 print!("|{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
@@ -294,6 +294,7 @@ fn programar_y_verificar(path_to_hex: &'static str) -> bool {
     ret
 }
 
-fn abc_put(abc: u8, i2c: &mut I2c<File>){
+fn abc_put(abc: u8, i2c: &mut I2c<File>, test_data: &mut TestData){
     i2c.smbus_write_byte(abc).expect("Write, abc");
+    test_data.abc=abc;
 }
