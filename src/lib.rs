@@ -154,6 +154,11 @@ pub fn resultados (test_data: TestData) {
     draw_text("   ___   __", x+200.0, y+y_step*1.7, font_size, BLACK);
     draw_text("  __________", x+200.0, y+y_step*1.5, font_size, BLACK);
 
+    draw_text("Tensiones", x+450.0, y+y_step, font_size, BLACK);
+    draw_text("Tension 1", x+450.0, y+y_step*1.0, font_size, BLACK);
+    draw_text("Tension 2", x+450.0, y+y_step*2.0, font_size, BLACK);
+    draw_text("Tension 3", x+450.0, y+y_step*3.0, font_size, BLACK);
+
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
     draw_text("|---+-+-|", x, y+y_step*2.0, font_size, BLACK);
