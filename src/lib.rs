@@ -116,8 +116,8 @@ pub fn resultados (test_data: TestData) {
 
     let t1x = 1000.0 + test_data.tension1 as f32;
     draw_triangle(vec2(t1x, y),
-                  vec2(t1x-2.0, y+3.0),
-                  vec2(t1x+2.0, y+3.0),
+                  vec2(t1x-3.0, y-5.0),
+                  vec2(t1x+3.0, y-5.0),
                   BLACK
     );
 
