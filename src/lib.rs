@@ -70,8 +70,11 @@ pub fn from_bytes(bytes_in: &[u8]) -> TestData {
     }
 }
 
-pub fn resultados (_test_data: TestData) {
+pub fn resultados (test_data: TestData) {
     clear_background(GREEN);
+    
+    draw_text("+---+-----+-----+-----+-----+-----+-----+\n|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |\n|---+-----+-----+-----+-----+-----+-----|", 95.0, 100.0, 60.0, BLACK);
+
 }
 
 const  NUMERODEPRUEBAS: usize = 1018;
