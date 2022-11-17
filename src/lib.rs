@@ -195,7 +195,7 @@ fn get_y(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     struct_in.y_cont += 1;
 
     let ret = y_calculado == y_medido;
-    print!("{:5}|{:5}|{:5}|",y_calculado,y_medido,ret);
+    println!("{:5}|{:5}|{:5}|",y_calculado,y_medido,ret);
 
     ret
 }
