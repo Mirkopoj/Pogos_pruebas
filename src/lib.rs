@@ -97,6 +97,9 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         match i {
             0 => {
                 ret&=programar_y_verificar_test(&mut test_data);
+                println!("---------------------------");
+                println!("Programar Test");
+                if !ret {println!("Falló ^^^^");}
                 println!("+---+-----+-----+");
                 println!("|ABC|  Z  |  Y  |");
                 println!("|---+-----+-----|");
@@ -107,16 +110,21 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 print!("|{:03b}|",abc);
                 sleep(Duration::from_millis(1));
                 ret&=get_z(&mut test_data, &inputs, abc);
+                if !ret {println!("Falló ^^^^");}
             },
             1..=16 if i%2 == 0 => {
                 let abc = (i/2) as u8;
                 ret&=get_y(&mut test_data, &inputs, abc);
+                if !ret {println!("Falló ^^^^");}
             },
             17..=1017 => {
                 adc(&mut test_data, i-17, &mut tensiones, &mut i2c);
             },
             1082 => {
                 ret&=programar_y_verificar_bueno(&mut test_data);
+                println!("---------------------------");
+                println!("Programar Bueno");
+                if !ret {println!("Falló ^^^^");}
             },
             _ => { },
         };
@@ -124,13 +132,16 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         pruebas_tx.send(test_data)?
     }
 
-    ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
-    ret &= test_data.tension2<0.2;
-    ret &= test_data.tension3>3.2;
     println!("---------------------------");
+    ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
     println!("Tension1: {}", test_data.tension1);
+    if !ret {println!("Falló ^^^^");}
+    ret &= test_data.tension2<0.2;
     println!("Tension2: {}", test_data.tension2);
+    if !ret {println!("Falló ^^^^");}
+    ret &= test_data.tension3>3.2;
     println!("Tension3: {}", test_data.tension3);
+    if !ret {println!("Falló ^^^^");}
     println!("---------------------------");
     println!("Aprobado: {}", ret);
     println!("---------------------------");
