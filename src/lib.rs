@@ -118,7 +118,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
     println!("Pidiendo i2c");
     let mut i2c = I2c::from_path("/dev/i2c-0").expect("i2c");
     i2c.smbus_set_slave_address(0x08, false).expect("addr");
-    i2c.smbus_write_byte(42).expect("Write");//Sincronizar el pic
+    i2c.smbus_write_byte(42).expect("Write inicial");//Sincronizar el pic
     let mut tensiones: [f64;3] = [0.0;3];
 
     for i in 0..=NUMERODEPRUEBAS {
