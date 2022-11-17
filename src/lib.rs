@@ -100,9 +100,9 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
                 println!("---------------------------");
                 println!("Programar Test");
                 if !ret {println!("Falló ^^^^");}
-                println!("+---+-----+-----+");
-                println!("|ABC|  Z  |  Y  |");
-                println!("|---+-----+-----|");
+                println!("+---+-----+-----+-----+-----+-----+-----+");
+                println!("|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |");
+                println!("|---+-----+-----+-----+-----+-----+-----|");
             },
             1..=16 if i%2 == 1 => {
                 let abc = (i/2) as u8;
@@ -195,7 +195,7 @@ fn get_y(struct_in: &mut TestData, inputs: &Lines<Input>, conv: u8) -> bool {
     struct_in.y_cont += 1;
 
     let ret = y_calculado == y_medido;
-    print!("{:5}|{:5}|{:5}|",z_calculado,z_medido,ret);
+    print!("{:5}|{:5}|{:5}|",y_calculado,y_medido,ret);
 
     ret
 }
