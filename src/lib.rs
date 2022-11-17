@@ -97,9 +97,9 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         match i {
             0 => {
                 ret&=programar_y_verificar_test(&mut test_data);
-                println!("---------------------------");
-                println!("Programar Test");
-                if !ret {println!("Falló ^^^^");}
+                println!("+--------------+");
+                println!("|Programar Test|");
+                println!("+--------------+");
                 println!("+---+-----+-----+-----+-----+-----+-----+");
                 println!("|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |");
                 println!("|---+-----+-----+-----+-----+-----+-----|");
@@ -120,11 +120,12 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
             17..=1017 => {
                 adc(&mut test_data, i-17, &mut tensiones, &mut i2c);
             },
-            1082 => {
+            1018 => {
                 ret&=programar_y_verificar_bueno(&mut test_data);
-                println!("---------------------------");
-                println!("Programar Bueno");
-                if !ret {println!("Falló ^^^^");}
+                println!("+---+-----+-----+-----+-----+-----+-----+");
+                println!("+---------------+");
+                println!("|Programar Bueno|");
+                println!("+---------------+");
             },
             _ => { },
         };
@@ -132,19 +133,17 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         pruebas_tx.send(test_data)?
     }
 
-    println!("---------------------------");
     ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
-    println!("Tension1: {}", test_data.tension1);
-    if !ret {println!("Falló ^^^^");}
     ret &= test_data.tension2<0.2;
-    println!("Tension2: {}", test_data.tension2);
-    if !ret {println!("Falló ^^^^");}
     ret &= test_data.tension3>3.2;
-    println!("Tension3: {}", test_data.tension3);
-    if !ret {println!("Falló ^^^^");}
-    println!("---------------------------");
-    println!("Aprobado: {}", ret);
-    println!("---------------------------");
+    println!("+------------------------------+");
+    println!("|Tension1: {:.18}|", test_data.tension1);
+    println!("|Tension2: {:.18}|", test_data.tension2);
+    println!("|Tension3: {:.18}|", test_data.tension3);
+    println!("+------------------------------+");
+    println!("+---------------+");
+    println!("|Aprobado: {:5}|", ret);
+    println!("+---------------+");
 
     Ok(ret) //true para placas funcionales, false para placas defectuosas
 }
