@@ -82,14 +82,14 @@ pub fn resultados (test_data: TestData) {
                 format!("|{:03b}|X|X|",i)
             },
             (true, false) => {
-                format!("|{:03b}|{:1b}|X|",i,(test_data.z>>(test_data.z_cont-1))&1)
+                format!("|{:03b}|{:1b}|X|",i,(test_data.z>>test_data.abc)&1)
             },
             (true, true) => {
                 format!(
                     "|{:03b}|{:1b}|{:1b}|",
                     i,
-                    (test_data.z>>(test_data.z_cont-1))&1,
-                    (test_data.y>>(test_data.y_cont-1))&1
+                    (test_data.z>>test_data.abc)&1,
+                    (test_data.y>>test_data.abc)&1
                     )
             },
             _ => {"".to_string()},
