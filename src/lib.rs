@@ -75,7 +75,7 @@ pub fn resultados (test_data: TestData) {
     
     let x = 95.0;
     let y = 100.0;
-    let y_step = 40.0;
+    let y_step = 30.0;
     let font_size = 40.0;
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
