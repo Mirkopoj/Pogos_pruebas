@@ -121,6 +121,7 @@ pub fn resultados (test_data: TestData) {
                   BLACK
     );
 
+    draw_rectangle(999.0, y-1.0, 352.0, y_step*2.0+2.0, BLACK);
     draw_rectangle(1000.0, y, 350.0, y_step*2.0, RED);
     draw_rectangle(1160.0, y, 10.0, y_step*2.0, GREEN);
 
@@ -131,6 +132,7 @@ pub fn resultados (test_data: TestData) {
                   BLACK
     );
 
+    draw_rectangle(999.0, y+y_step*4.0-1.0, 352.0, y_step*2.0+2.0, BLACK);
     draw_rectangle(1000.0, y+y_step*4.0, 350.0, y_step*2.0, RED);
     draw_rectangle(1020.0, y+y_step*4.0, 330.0, y_step*2.0, GREEN);
 
@@ -141,6 +143,7 @@ pub fn resultados (test_data: TestData) {
                   BLACK
     );
 
+    draw_rectangle(999.0, y+y_step*8.0-1.0, 352.0, y_step*2.0+2.0, BLACK);
     draw_rectangle(1000.0, y+y_step*8.0, 350.0, y_step*2.0, RED);
     draw_rectangle(1320.0, y+y_step*8.0, 30.0, y_step*2.0, GREEN);
 
