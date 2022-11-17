@@ -73,11 +73,22 @@ pub fn from_bytes(bytes_in: &[u8]) -> TestData {
 pub fn resultados (test_data: TestData) {
     clear_background(GREEN);
     
-    draw_text("+---+-----+-----+-----+-----+-----+-----+", 95.0, 100.0, 40.0, BLACK);
-    draw_text("|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |", 95.0, 120.0, 40.0, BLACK);
-    draw_text("|---+-----+-----+-----+-----+-----+-----|", 95.0, 140.0, 40.0, BLACK);
+    draw_text("+---+-+-+", 95.0, 100.0, 40.0, BLACK);
+    draw_text("|ABC|Z|Y|", 95.0, 120.0, 40.0, BLACK);
+    draw_text("|---+-+-|", 95.0, 140.0, 40.0, BLACK);
     for i in 0u8..8 {
-        let renglon = format!("|{:03b}|{}",i,test_data.abc);
+        let renglon = match (test_data.z_cont<=test_data.abc, test_data.y_cont<=test_data.abc) {
+            (false, false) => {
+                format!("|{:03b}|X|X|",i)
+            },
+            (true, false) => {
+                format!("|{:03b}|{:1b}|X|",i,(test_data.z>>test_data.z_cont)&1)
+            },
+            (true, true) => {
+                format!("|{:03b}|{:1b}|{:1b}|",i,(test_data.z>>test_data.z_cont)&1,(test_data.y>>test_data.y_cont)&1)
+            },
+            _ => {"".to_string()},
+        };
         draw_text(renglon.as_str(), 95.0, 160.0+(20.0*(i as f32)), 40.0, BLACK);
     }
     let renglon = format!("{:?}",test_data);
