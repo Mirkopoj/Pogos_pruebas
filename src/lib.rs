@@ -15,7 +15,7 @@ extern crate i2c_linux;
 use i2c_linux::I2c;
 use std::fs::File;
 
-#[derive(Copy, Clone, PartialEq, Default)]
+#[derive(Copy, Clone, PartialEq, Default, Debug)]
 pub struct TestData {
     programdo_test: bool,
     verificado_test: bool,
