@@ -78,7 +78,7 @@ pub fn resultados (test_data: TestData) {
     let y_step = 30.0;
     let font_size = 40.0;
 
-    draw_rectangle(x+9.0, y, 141.0, y_step*9.0, LIGHTGRAY);
+    draw_rectangle(x+8.0, y-10.0, 142.0, y_step*9.5, LIGHTGRAY);
 
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
@@ -103,7 +103,7 @@ pub fn resultados (test_data: TestData) {
         };
         draw_text(renglon.as_str(), x, y+(y_step*((i+3) as f32)), font_size, BLACK);
     }
-    draw_text("|---+-+-|", x, y+y_step*11.0, font_size, BLACK);
+    draw_text("+---+-+-+", x, y+y_step*11.0, font_size, BLACK);
 
 }
 
