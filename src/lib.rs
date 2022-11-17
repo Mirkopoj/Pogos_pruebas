@@ -97,6 +97,7 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
         match i {
             0 => {
                 ret&=programar_y_verificar_test(&mut test_data);
+                println!("---+----+----");
                 println!("ABC|  Z |  Y ");
                 println!("---+----+----");
             },
@@ -126,10 +127,13 @@ pub fn prueba (pruebas_tx: &Sender<TestData>, pruebas_pausa_rx: &Receiver<bool>)
     ret &= (test_data.tension1<1.7) & (test_data.tension1>1.6);
     ret &= test_data.tension2<0.2;
     ret &= test_data.tension3>3.2;
+    println!("---------------------------");
     println!("Tension1: {}", test_data.tension1);
     println!("Tension2: {}", test_data.tension2);
     println!("Tension3: {}", test_data.tension3);
+    println!("---------------------------");
     println!("Aprobado: {}", ret);
+    println!("---------------------------");
 
     Ok(ret) //true para placas funcionales, false para placas defectuosas
 }
