@@ -117,6 +117,12 @@ pub fn resultados (test_data: TestData) {
     draw_rectangle(1000.0, y, 350.0, y_step*2.0, RED);
     draw_rectangle(1320.0, y, 30.0, y_step*2.0, GREEN);
 
+    draw_rectangle(1000.0, y+y_step*4.0, 350.0, y_step*2.0, RED);
+    draw_rectangle(1320.0, y+y_step*4.0, 30.0, y_step*2.0, GREEN);
+
+    draw_rectangle(1000.0, y+y_step*4.0, 350.0, y_step*2.0, RED);
+    draw_rectangle(1320.0, y+y_step*4.0, 30.0, y_step*2.0, GREEN);
+
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
     draw_text("|---+-+-|", x, y+y_step*2.0, font_size, BLACK);
