@@ -98,6 +98,20 @@ pub fn resultados (test_data: TestData) {
             let color = if resultado {GREEN} else {RED};
             draw_rectangle(175.0, y+(y_step*2.1)+2.0+offset*y_step, 35.0, (y_step*1.0)+1.0, color);
         }
+        for rect in 0..test_data.y_cont {
+            let offset = rect as f32;
+
+            let a = (rect>>0 & 1) == 1; 
+            let b = (rect>>1 & 1) == 1; 
+            let c = (rect>>2 & 1) == 1; 
+
+            let y_calculado = (a^b)&(b|c);
+            let y = (test_data.y>>rect)&1 == 1;
+            
+            let resultado = y == y_calculado;
+            let color = if resultado {GREEN} else {RED};
+            draw_rectangle(210.0, y+(y_step*2.1)+2.0+offset*y_step, 35.0, (y_step*1.0)+1.0, color);
+        }
     }
 
     draw_text("+---+-+-+", x, y, font_size, BLACK);
