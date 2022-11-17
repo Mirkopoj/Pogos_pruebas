@@ -71,12 +71,15 @@ pub fn from_bytes(bytes_in: &[u8]) -> TestData {
 }
 
 pub fn resultados (test_data: TestData) {
-    clear_background(GREEN);
+    clear_background(WHITE);
     
     let x = 95.0;
     let y = 100.0;
     let y_step = 30.0;
     let font_size = 40.0;
+
+    draw_rectangle(x, y+y_step*2.5, 50.0, y_step*10, GRAY)
+
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
     draw_text("|---+-+-|", x, y+y_step*2.0, font_size, BLACK);
@@ -100,6 +103,7 @@ pub fn resultados (test_data: TestData) {
         };
         draw_text(renglon.as_str(), x, y+(y_step*((i+3) as f32)), font_size, BLACK);
     }
+    draw_text("|---+-+-|", x, y+y_step*11.0, font_size, BLACK);
 
 }
 
