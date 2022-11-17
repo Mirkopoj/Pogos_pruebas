@@ -149,10 +149,10 @@ pub fn resultados (test_data: TestData) {
 
     draw_text("Z=(A+B)(B+C)", x+200.0, y+y_step, font_size, BLACK);
     draw_text("o", x+357.0, y+y_step, font_size, BLACK);
-    draw_text("Y=(A+B)+(BC)", x+200.0, y+y_step*2.2, font_size, BLACK);
-    draw_text("o", x+323.0, y+y_step*2.2, font_size, BLACK);
-    draw_text("   ___   __", x+200.0, y+y_step*1.2, font_size, BLACK);
-    draw_text("  __________", x+200.0, y+y_step*1.0, font_size, BLACK);
+    draw_text("Y=(A+B)+(BC)", x+200.0, y+y_step*2.7, font_size, BLACK);
+    draw_text("o", x+323.0, y+y_step*2.7, font_size, BLACK);
+    draw_text("   ___   __", x+200.0, y+y_step*1.7, font_size, BLACK);
+    draw_text("  __________", x+200.0, y+y_step*1.5, font_size, BLACK);
 
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
