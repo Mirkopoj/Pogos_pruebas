@@ -25,5 +25,6 @@ pub fn ver_estado (rx: &Receiver<bool>) {
 }
 
 fn esperar (rx: &Receiver<bool>) {
+    println!("Pausado");
     while rx.recv().expect("Perdimos la pausa para las prueba, esperando") { }
 }

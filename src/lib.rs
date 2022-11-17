@@ -235,7 +235,6 @@ fn adc(struct_in: &mut TestData,
                                              
     for i in 0..3 {
         let adch = i2c.smbus_read_byte().expect("ReadH") as u16;
-        sleep(Duration::from_micros(100));
         let adcl = i2c.smbus_read_byte().expect("ReadL") as u16;
         let adc:u16 = (adch <<8) + adcl;
         let tension = adc as f64 * 0.003225806452;
