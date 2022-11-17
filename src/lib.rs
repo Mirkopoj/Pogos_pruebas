@@ -82,6 +82,7 @@ pub fn resultados (test_data: TestData) {
     }
     let renglon = format!("{:?}",test_data);
     draw_text(&renglon, 95.0, 320.0, 40.0, BLACK);
+    println!("{:?}",test_data);
 
 }
 
