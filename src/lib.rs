@@ -106,9 +106,9 @@ pub fn resultados (test_data: TestData) {
             let c = (rect>>2 & 1) == 1; 
 
             let y_calculado = (a^b)&(b|c);
-            let y = (test_data.y>>rect)&1 == 1;
+            let y_real = (test_data.y>>rect)&1 == 1;
             
-            let resultado = y == y_calculado;
+            let resultado = y_real == y_calculado;
             let color = if resultado {GREEN} else {RED};
             draw_rectangle(210.0, y+(y_step*2.1)+2.0+offset*y_step, 35.0, (y_step*1.0)+1.0, color);
         }
