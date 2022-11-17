@@ -76,6 +76,10 @@ pub fn resultados (test_data: TestData) {
     draw_text("+---+-----+-----+-----+-----+-----+-----+", 95.0, 100.0, 40.0, BLACK);
     draw_text("|ABC|Zcalc|Zreal|  == |Ycalc|Yreal|  == |", 95.0, 120.0, 40.0, BLACK);
     draw_text("|---+-----+-----+-----+-----+-----+-----|", 95.0, 140.0, 40.0, BLACK);
+    for i in 0u8..8 {
+        let renglon = format!("|{:03b}|{}",i,test_data.abc);
+        draw_text(renglon.as_str(), 95.0, 160.0+(20.0*(i as f32)), 40.0, BLACK);
+    }
 
 }
 
