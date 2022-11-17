@@ -114,6 +114,13 @@ pub fn resultados (test_data: TestData) {
         }
     }
 
+    let t1x = 1000.0 + test_data.tension1;
+    draw_triangle(vec2(t1x, y),
+                  vec2(t1x-2.0, y+3.0),
+                  vec2(t1x+2.0, y+3.0),
+                  BLACK
+    );
+
     draw_rectangle(1000.0, y, 350.0, y_step*2.0, RED);
     draw_rectangle(1160.0, y, 10.0, y_step*2.0, GREEN);
 
