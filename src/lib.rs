@@ -79,7 +79,7 @@ pub fn resultados (test_data: TestData) {
     let font_size = 40.0;
 
     draw_rectangle(x+8.0, y-10.0, 142.0, (y_step*11.0)+1.0, LIGHTGRAY);
-    draw_rectangle(x+8.0, y+(y_step*2.0)-9.0, 72.0, (y_step*1.5)+1.0, GREEN);
+    draw_rectangle(x+8.0, y+(y_step*2.0), 72.0, (y_step*1.0)+1.0, GREEN);
 
     draw_text("+---+-+-+", x, y, font_size, BLACK);
     draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
