@@ -81,7 +81,7 @@ pub fn resultados (test_data: TestData) {
         draw_text(renglon.as_str(), 95.0, 160.0+(20.0*(i as f32)), 40.0, BLACK);
     }
     let renglon = format!("{:?}",test_data);
-    draw_text(renglon, 95.0, 320.0, 40.0, BLACK);
+    draw_text(&renglon, 95.0, 320.0, 40.0, BLACK);
 
 }
 
