@@ -73,9 +73,13 @@ pub fn from_bytes(bytes_in: &[u8]) -> TestData {
 pub fn resultados (test_data: TestData) {
     clear_background(GREEN);
     
-    draw_text("+---+-+-+", 95.0, 100.0, 40.0, BLACK);
-    draw_text("|ABC|Z|Y|", 95.0, 120.0, 40.0, BLACK);
-    draw_text("|---+-+-|", 95.0, 140.0, 40.0, BLACK);
+    let x = 95.0;
+    let y = 100.0;
+    let y_step = 40.0;
+    let font_size = 40.0
+    draw_text("+---+-+-+", x, y, font_size, BLACK);
+    draw_text("|ABC|Z|Y|", x, y+y_step, font_size, BLACK);
+    draw_text("|---+-+-|", x, y+y_step*2.0, font_size, BLACK);
     for i in 0u8..8 {
         let renglon = match (test_data.z_cont>test_data.abc, test_data.y_cont>test_data.abc) {
             (false, false) => {
@@ -94,11 +98,8 @@ pub fn resultados (test_data: TestData) {
             },
             _ => {"".to_string()},
         };
-        draw_text(renglon.as_str(), 95.0, 160.0+(20.0*(i as f32)), 40.0, BLACK);
+        draw_text(renglon.as_str(), x, y+(y_step*((i+3) as f32)), font_size, BLACK);
     }
-    let renglon = format!("{:?}",test_data);
-    draw_text(&renglon, 95.0, 320.0, 40.0, BLACK);
-    println!("{:?}",test_data);
 
 }
 
