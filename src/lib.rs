@@ -2,7 +2,7 @@ use std::sync::mpsc::{Receiver, Sender, SendError};
 
 use macroquad::prelude::*;
 
-mod funciones_internas;
+pub mod funciones_internas;
 use funciones_internas::*;
 
 #[derive(Copy, Clone, PartialEq, Default)]
@@ -25,7 +25,7 @@ pub fn from_bytes(_bytes_in: &[u8]) -> TestData {
 pub fn resultados (_test_data: TestData) {
     clear_background(GREEN);
     /* Aqui va un hmi custom para las pruebas, utilizando macroquad */
-    /* El espacio de pantalla disponible va de (20.0, 20.0) a (230.0, 230.0) */
+    /* El espacio de pantalla disponible va de (20.0, 20.0) a (screen_width()-230.0,screen_height()-430.0) */
 }
 
 /* Editar el valor de la constante de acuerdo al numero de pruebas */
